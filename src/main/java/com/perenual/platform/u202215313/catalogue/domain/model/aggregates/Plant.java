@@ -2,6 +2,7 @@ package com.perenual.platform.u202215313.catalogue.domain.model.aggregates;
 
 import com.perenual.platform.u202215313.catalogue.domain.model.commands.CreatePlantsCommand;
 import com.perenual.platform.u202215313.catalogue.domain.model.entities.WateringLevel;
+import com.perenual.platform.u202215313.catalogue.domain.model.events.ApplicationReadyEvent;
 import com.perenual.platform.u202215313.catalogue.domain.model.valueobjects.CommonName;
 import com.perenual.platform.u202215313.catalogue.domain.model.valueobjects.OtherName;
 import com.perenual.platform.u202215313.catalogue.domain.model.valueobjects.ReferenceImageUrl;
@@ -52,7 +53,7 @@ public class Plant extends AuditableAbstractAggregateRoot<Plant> {
         this.wateringLevel = wateringLevel;
         this.createdAt = new Date();
         this.updatedAt = new Date();
-
+        this.registerEvent(new ApplicationReadyEvent(this, this.wateringLevel.getId()));
     }
 
     public String getNameCommon() {

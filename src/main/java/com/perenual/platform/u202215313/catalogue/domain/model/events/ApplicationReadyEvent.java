@@ -4,7 +4,10 @@ import org.springframework.context.ApplicationEvent;
 
 @Getter
 public class ApplicationReadyEvent extends ApplicationEvent {
-    public ApplicationReadyEvent(Object source) {
+
+    private final Long wateringLevelId;
+    public ApplicationReadyEvent(Object source, Long wateringLevelId) {
         super(source);
+        this.wateringLevelId = wateringLevelId;
     }
 }

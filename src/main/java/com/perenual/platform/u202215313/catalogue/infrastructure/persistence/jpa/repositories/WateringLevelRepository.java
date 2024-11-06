@@ -9,5 +9,5 @@ public interface WateringLevelRepository  extends JpaRepository<WateringLevel, L
 
     WateringLevel findByName(String name);
 
-    WateringLevel findByCreatedAt(Date createdAt);
+
 }
