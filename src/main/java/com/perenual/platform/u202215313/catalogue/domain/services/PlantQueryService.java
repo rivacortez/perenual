@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 public interface PlantQueryService  {
     List<Plant> handle(GetAllPlantsQuery query);
     Optional<Plant> handle(GetPlantByIdQuery query);

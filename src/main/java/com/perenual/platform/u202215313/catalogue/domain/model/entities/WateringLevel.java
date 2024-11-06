@@ -28,6 +28,10 @@ public class WateringLevel {
         this.name = WateringLevelName.NONE;
     }
 
+    public WateringLevel(WateringLevelName name) {
+        this.name = name;
+    }
+
     public WateringLevel(CreateWateringLevelCommand command) {
         this.name = command.name();
     }
