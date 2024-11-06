@@ -1,4 +1,6 @@
 package com.perenual.platform.u202215313.catalogue.domain.model.commands;
 
-public record CreateWateringLevelCommand(Long id, String name) {
+import com.perenual.platform.u202215313.catalogue.domain.model.valueobjects.WateringLevelName;
+
+public record CreateWateringLevelCommand(Long id, WateringLevelName name) {
 }

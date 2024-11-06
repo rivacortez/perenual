@@ -7,5 +7,7 @@ import java.util.Date;
 
 public interface PlantRepository extends JpaRepository<Plant, Long> {
 
-    boolean existsByName(String name, Date createdAt);
+    boolean existsByNameCommon(String nameCommon);
+    boolean existsByNameScientific(String nameScientific);
+    boolean existsByNameOther(String nameOther);
 }
