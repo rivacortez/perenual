@@ -10,8 +10,8 @@ public class CreatePlantCommandFromResourceAssembler {
                 resource.namecommon(),
                 resource.namescientific(),
                 resource.wateringLevelId(),
-                resource.imageUrlReference(),
-                resource.nameOther()
+                resource.nameOther(),
+                resource.imageUrlReference()
         );
     }
 }

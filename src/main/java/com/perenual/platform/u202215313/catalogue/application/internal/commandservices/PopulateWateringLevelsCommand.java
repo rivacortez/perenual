@@ -3,6 +3,7 @@ package com.perenual.platform.u202215313.catalogue.application.internal.commands
 import com.perenual.platform.u202215313.catalogue.domain.model.entities.WateringLevel;
 import com.perenual.platform.u202215313.catalogue.domain.model.valueobjects.WateringLevelName;
 import com.perenual.platform.u202215313.catalogue.infrastructure.persistence.jpa.repositories.WateringLevelRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -17,6 +18,7 @@ public class PopulateWateringLevelsCommand {
         this.wateringLevelRepository = wateringLevelRepository;
     }
 
+    @PostConstruct
     public void handle() {
         List<WateringLevelName> wateringLevels = Arrays.asList(WateringLevelName.values());
 
