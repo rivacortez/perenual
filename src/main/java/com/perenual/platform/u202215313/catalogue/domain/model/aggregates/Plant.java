@@ -21,47 +21,47 @@ public class Plant extends AuditableAbstractAggregateRoot<Plant> {
     private WateringLevel wateringLevel;
 
     @Embedded
-    private CommonName namecommon;
+    private CommonName nameCommon;
 
     @Embedded
-    private ScientificName namescientific;
+    private ScientificName nameScientific;
 
     @Embedded
     private ReferenceImageUrl imageUrlReference;
 
     @Embedded
     private OtherName nameOther;
-    @Embedded
-    private ReferenceImageUrl urlImageReference;
 
     @Getter
     @Column(name = "created_at", nullable = false )
     private Date createdAt;
 
-
     @Column(name = "updated_at", nullable = false )
     private Date updatedAt;
 
-  public Plant() {}
+    public Plant() {}
 
     public Plant(CreatePlantsCommand command, WateringLevel wateringLevel) {
-        this.namecommon = new CommonName(command.commonName());
-        this.namescientific = new ScientificName(command.scientificName());
+        if (command == null || wateringLevel == null) {
+            throw new IllegalArgumentException("Command and WateringLevel cannot be null");
+        }
+        this.nameCommon = new CommonName(command.commonName());
+        this.nameScientific = new ScientificName(command.scientificName());
         this.imageUrlReference = new ReferenceImageUrl(command.defaultImageUrl());
         this.nameOther = new OtherName(command.otherName());
-
         this.wateringLevel = wateringLevel;
         this.createdAt = new Date();
         this.updatedAt = new Date();
         this.registerEvent(new ApplicationReadyEvent(this, this.wateringLevel.getId()));
     }
 
+
     public String getNameCommon() {
-        return namecommon.nameCommon();
+        return nameCommon.nameCommon();
     }
 
-    public  String getNameScientific() {
-        return namescientific.nameScientific();
+    public String getNameScientific() {
+        return nameScientific.nameScientific();
     }
 
     public String getImageUrlReference() {
@@ -70,6 +70,11 @@ public class Plant extends AuditableAbstractAggregateRoot<Plant> {
 
     public String getNameOther() {
         return nameOther.nameOther();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = new Date();
     }
 
 }

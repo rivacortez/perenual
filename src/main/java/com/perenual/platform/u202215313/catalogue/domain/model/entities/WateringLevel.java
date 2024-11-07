@@ -21,7 +21,7 @@ public class WateringLevel {
     @Enumerated(EnumType.STRING)
     private WateringLevelName name;
 
-    @OneToMany(mappedBy = "watering_levels", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "wateringLevel", cascade = CascadeType.ALL)
     private List<Plant> plants= new ArrayList<>();
 
     public WateringLevel() {

@@ -8,6 +8,6 @@ import java.util.Date;
 public interface PlantRepository extends JpaRepository<Plant, Long> {
 
     boolean existsByNameCommon(String nameCommon);
-    boolean existsByNameScientific(String nameScientific);
+    boolean existsByNameScientific(String nameScientific); // Corrected attribute name
     boolean existsByNameOther(String nameOther);
 }
